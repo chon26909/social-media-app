@@ -39,7 +39,12 @@ interface DatabaseUserAttributes {
 }
 
 export const validateRequest = cache(
-    async (): Promise<{ user: User; session: Session }> =>  {
-        
+    async (): Promise<
+    { user: User; session: Session } | { user:null; session: null }
+    > =>  {
+        return {
+            user: null,
+            session: null
+        }
     }
 )
