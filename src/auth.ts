@@ -1,6 +1,7 @@
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma"
 import prisma from "./lib/prisma"
-import { Lucia } from 'lucia'
+import { Lucia, Session, User } from 'lucia'
+import { cache } from "react"
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user)
 
@@ -37,4 +38,8 @@ interface DatabaseUserAttributes {
     googleId: string | null
 }
 
- 
+export const validateRequest = cache(
+    async (): Promise<{ user: User; session: Session }> =>  {
+        
+    }
+)
